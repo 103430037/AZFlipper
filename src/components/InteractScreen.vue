@@ -24,6 +24,7 @@
         :card="{ index: index, value: card }"
         :settings="settings"
         @onFlip="checkRule($event)"
+        @onClose="resetRule($event)"
       ></card>
     </div>
   </div>
@@ -68,11 +69,13 @@ export default {
     checkRule(card) {
       if (this.rules.length === 2) return false;
       this.rules.push(card);
-      // If choose matched cards
+      // If choose matched cards -----------------------------------------------------------------------------
       if (
         this.rules.length === 2 &&
-        this.rules[0].value === this.rules[1].value
+        this.rules[0].value === this.rules[1].value &&
+        this.rules[0].index !== this.rules[1].index
       ) {
+        console.log("Correct ...");
         // add disabled class
         this.$refs[`card-${this.rules[0].index}`][0].onAddDisabledMode();
         this.$refs[`card-${this.rules[1].index}`][0].onAddDisabledMode();
@@ -90,10 +93,11 @@ export default {
           }
         }, 800);
       }
-      // If choose unmatched cards
+      // If choose unmatched cards ----------------------------------------------------------------------------
       else if (
         this.rules.length === 2 &&
-        this.rules[0].value !== this.rules[1].value
+        this.rules[0].value !== this.rules[1].value &&
+        this.rules[0].index !== this.rules[1].index
       ) {
         let ruleIndex0 = this.rules[0];
         let ruleIndex1 = this.rules[1];
@@ -103,8 +107,22 @@ export default {
           //Close two cards
           this.$refs[`card-${ruleIndex0.index}`][0].onCloseCard();
           this.$refs[`card-${ruleIndex1.index}`][0].onCloseCard();
+          console.log("Wrong ...");
         }, 800);
+      }
+      // If choose same card twice really fast --------------------------------------------------------------------
+      else if (
+        this.rules.length === 2 &&
+        this.rules[0].value === this.rules[1].value &&
+        this.rules[0].index === this.rules[1].index
+      ) {
+        console.log("Bug ...");
+        this.rules = [];
+        this.rules.push(card);
       } else return false;
+    },
+    resetRule() {
+      this.rules = [];
     },
   },
 };

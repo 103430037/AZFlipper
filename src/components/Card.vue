@@ -65,6 +65,8 @@ export default {
       this.isFlipped = !this.isFlipped;
       if (this.isFlipped) {
         this.$emit("onFlip", this.card);
+      } else {
+        this.$emit("onClose", this.card);
       }
     },
     //onFlipBackCard
