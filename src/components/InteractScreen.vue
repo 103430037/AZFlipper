@@ -1,5 +1,6 @@
 <template>
   <div class="screen">
+    <div class="back-btn" @click="onBack()">Back</div>
     <div
       class="screen-inner"
       :style="{
@@ -38,6 +39,7 @@ export default {
     return {
       randomImage: this.getRandomImage(),
       rules: [],
+      isNotClosing: true, //check neu card van dang closing de tranh khi back ma chua close xong se gay loi
     };
   },
   props: {
@@ -103,11 +105,13 @@ export default {
         let ruleIndex1 = this.rules[1];
         //Reset array rules
         this.rules = [];
+        this.isNotClosing = false; //Card dang lat up xuong
         setTimeout(() => {
           //Close two cards
           this.$refs[`card-${ruleIndex0.index}`][0].onCloseCard();
           this.$refs[`card-${ruleIndex1.index}`][0].onCloseCard();
           console.log("Wrong ...");
+          this.isNotClosing = true; //Card da lat up xuong xong
         }, 800);
       }
       // If choose same card twice really fast --------------------------------------------------------------------
@@ -123,6 +127,11 @@ export default {
     },
     resetRule() {
       this.rules = [];
+    },
+    onBack() {
+      if (this.isNotClosing) {
+        this.$emit("onBackMainScreen");
+      }
     },
   },
 };
@@ -146,5 +155,23 @@ export default {
   margin: 1rem auto;
   -moz-transform: scale(3);
   -moz-transform-origin: 0 0;
+}
+
+.back-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  display: inline-block;
+  background: transparent;
+  box-shadow: none;
+  padding: 1rem 2rem;
+  border: 1px solid var(--light);
+  border-radius: 1rem;
+}
+
+.back-btn:hover {
+  background-color: var(--light);
+  color: var(--dark);
+  cursor: pointer;
 }
 </style>

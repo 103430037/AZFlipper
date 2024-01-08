@@ -11,6 +11,7 @@
     v-if="statusMatch === 'interact'"
     v-bind:settings="settings"
     @onFinish="onGetRusult"
+    @onBackMainScreen="statusMatch = 'default'"
   >
   </interact-screen>
   <result-screen
