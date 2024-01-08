@@ -1,25 +1,29 @@
 <template>
   <div class="screen">
-    <h1>CARDS FLIPPER</h1>
-    <span>Azur Lane edition</span>
+    <h1>AZUR LANE FLIPPER</h1>
+    <span>AZVN❤ #9kmember</span>
     <p>Select mode to start game</p>
     <div class="modes">
       <button @click="onStart(16)">
+        <img src="../assets/gif/easy.gif" alt="" />
         <p>4x4</p>
         <span>Easy</span>
       </button>
 
       <button @click="onStart(36)">
+        <img src="../assets/gif/normal.gif" alt="" />
         <p>6x6</p>
         <span>Normal</span>
       </button>
 
       <button @click="onStart(64)">
+        <img src="../assets/gif/hard.gif" alt="" />
         <p>8x8</p>
         <span>Hard</span>
       </button>
 
       <button @click="onStart(100)">
+        <img src="../assets/gif/superhard.gif" alt="" />
         <p>10x10</p>
         <span>Very hard</span>
       </button>
@@ -83,6 +87,10 @@ export default {
   justify-content: center;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
+}
+
+.modes button img {
+  max-width: 50%;
 }
 
 .modes button:hover {

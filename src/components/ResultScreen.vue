@@ -1,8 +1,14 @@
 <template>
   <div class="screen">
-    <h1>💃 CONGRATULATIONS 💃</h1>
+    <div class="congrats">
+      <img src="../assets/gif/again.gif" alt="" />
+      <h1>CONGRATULATIONS</h1>
+      <img src="../assets/gif/again.gif" alt="" />
+    </div>
     <h2>{{ Math.round(timer / 1000) }} seconds</h2>
-    <button @click="onStartAgain()">Start again</button>
+    <button @click="onStartAgain()">
+      <p>Start again</p>
+    </button>
   </div>
 </template>
 
@@ -64,5 +70,19 @@ export default {
 .screen button:hover {
   background-color: var(--light);
   color: var(--dark);
+}
+
+.congrats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.congrats h1 {
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+.congrats img {
+  max-width: 10%;
 }
 </style>
