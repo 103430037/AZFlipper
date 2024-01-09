@@ -44,7 +44,7 @@ export default {
 <style lang="css" scoped>
 .screen {
   width: 100%;
-  height: -webkit-fill-available;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -111,7 +111,13 @@ export default {
   margin-top: 0.5rem;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 258px) {
+  .screen {
+    height: max-content;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 258px) {
   .modes button {
     width: 30%;
     height: auto;
@@ -128,7 +134,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 1024px) and (min-width: 480px) {
   .screen {
     justify-content: start;
     padding-top: 10rem;
