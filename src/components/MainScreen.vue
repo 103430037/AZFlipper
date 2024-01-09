@@ -4,25 +4,25 @@
     <span>AZVN❤ #9kmember</span>
     <p>Select mode to start game</p>
     <div class="modes">
-      <button @click="onStart(16)">
+      <button @click="onStart(16, screenHeight)">
         <img src="../assets/gif/easy.gif" alt="" />
         <p>4x4</p>
         <span>Easy</span>
       </button>
 
-      <button @click="onStart(36)">
+      <button @click="onStart(36, screenHeight)">
         <img src="../assets/gif/normal.gif" alt="" />
         <p>6x6</p>
         <span>Normal</span>
       </button>
 
-      <button @click="onStart(64)">
+      <button @click="onStart(64, screenHeight)">
         <img src="../assets/gif/hard.gif" alt="" />
         <p>8x8</p>
         <span>Hard</span>
       </button>
 
-      <button @click="onStart(100)">
+      <button @click="onStart(100, screenHeight)">
         <img src="../assets/gif/superhard.gif" alt="" />
         <p>10x10</p>
         <span>Very hard</span>
@@ -33,9 +33,14 @@
 
 <script>
 export default {
+  data() {
+    return {
+      screenHeight: screen.height,
+    };
+  },
   methods: {
-    onStart(totalBlock) {
-      this.$emit("onStart", { totalBlock });
+    onStart(totalBlock, screenHeight) {
+      this.$emit("onStart", { totalBlock, screenHeight });
     },
   },
 };
@@ -110,8 +115,8 @@ export default {
   font-size: 1.25rem;
   margin-top: 0.5rem;
 }
-
-@media screen and (max-width: 258px) {
+/* Responsive cho may nho */
+@media screen and (max-width: 259px) {
   .screen {
     height: max-content;
   }
@@ -145,11 +150,23 @@ export default {
   }
 }
 
+@media screen and (max-width: 1024px) and (min-width: 258px) and (orientation: landscape) {
+  .screen {
+    height: auto;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .modes button {
     padding: 12px;
     width: 10%;
     height: auto;
+  }
+}
+
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  .screen {
+    height: 100vh;
   }
 }
 </style>

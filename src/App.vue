@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       settings: {
+        screenHeight: 0,
         totalBlock: 0,
         cardsSet: [],
         timeStart: null,
@@ -48,7 +49,7 @@ export default {
   methods: {
     changeStatus(config, status) {
       this.settings.totalBlock = config.totalBlock;
-
+      this.settings.screenHeight = config.screenHeight;
       //create two cards sets and combine them
       const firstCardsSet = Array.from(
         { length: this.settings.totalBlock / 2 },

@@ -3,11 +3,7 @@
     class="card"
     :class="{ disabled: isDisabled }"
     :style="{
-      height: `${
-        (920 - 16 * Math.sqrt(settings.cardsSet.length)) /
-          Math.sqrt(settings.cardsSet.length) -
-        16
-      }px`,
+      height: `${(920 - 16 * 4) / Math.sqrt(settings.cardsSet.length) - 16}px`,
       width: `${
         (((920 - 16 * 4) / Math.sqrt(settings.cardsSet.length) - 16) * 3) / 4
       }px`,

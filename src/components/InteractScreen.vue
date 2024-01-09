@@ -5,15 +5,16 @@
       class="screen-inner"
       :style="{
         width: `${
-          ((((920 - 16 * 4) / Math.sqrt(settings.cardsSet.length) - 16) * 3) /
+          ((((920 - 16 * 4) / Math.sqrt(this.settings.cardsSet.length) - 16) *
+            3) /
             4 +
             16) *
-          Math.sqrt(settings.cardsSet.length)
+          Math.sqrt(this.settings.cardsSet.length)
         }px`,
         zoom: `${
           settings.cardsSet.length === 16 || settings.cardsSet.length === 36
             ? '0.8'
-            : '0.9'
+            : '0.8'
         }`,
       }"
     >
@@ -24,6 +25,7 @@
         :imgBackFaceUrl="`images/${randomImage[settings.cardsSet[index] - 1]}`"
         :card="{ index: index, value: card }"
         :settings="settings"
+        @click="console.log($event)"
         @onFlip="checkRule($event)"
         @onClose="resetRule($event)"
       ></card>
@@ -173,5 +175,32 @@ export default {
   background-color: var(--light);
   color: var(--dark);
   cursor: pointer;
+}
+
+/* Responsive cho may nho */
+@media screen and (max-width: 480px) and (min-width: 258px) {
+  .screen-inner {
+    padding-top: 10rem;
+    zoom: 0.5 !important;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+  .screen-inner {
+    padding-top: 1rem;
+    zoom: 0.6 !important;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 480px) and (orientation: landscape) {
+  .screen {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  .screen {
+    height: 100vh;
+  }
 }
 </style>
