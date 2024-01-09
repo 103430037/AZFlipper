@@ -44,7 +44,7 @@ export default {
 <style lang="css" scoped>
 .screen {
   width: 100%;
-  height: 100vh;
+  height: -webkit-fill-available;
   position: absolute;
   top: 0;
   left: 0;
@@ -68,6 +68,9 @@ export default {
 
 .modes {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 2rem;
 }
 
@@ -82,7 +85,7 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  margin: 0 1rem;
+  margin: 1rem;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -90,7 +93,7 @@ export default {
 }
 
 .modes button img {
-  max-width: 50%;
+  max-width: 45%;
 }
 
 .modes button:hover {
@@ -106,5 +109,41 @@ export default {
   display: block;
   font-size: 1.25rem;
   margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 480px) {
+  .modes button {
+    width: 30%;
+    height: auto;
+  }
+  .screen h1 {
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .screen {
+    padding-top: 4rem;
+    justify-content: start;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .screen {
+    justify-content: start;
+    padding-top: 10rem;
+  }
+  .modes button {
+    width: 20%;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modes button {
+    padding: 12px;
+    width: 10%;
+    height: auto;
+  }
 }
 </style>
