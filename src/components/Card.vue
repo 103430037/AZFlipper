@@ -80,10 +80,10 @@ export default {
 <style lang="css" scoped>
 .card {
   display: inline-block;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .card_inner {

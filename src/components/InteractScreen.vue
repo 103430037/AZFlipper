@@ -5,10 +5,10 @@
       class="screen-inner"
       :style="{
         width: `${
-          ((((920 - 16 * 4) / Math.sqrt(this.settings.cardsSet.length) - 16) *
+          ((((920 - 16 * 4) / Math.sqrt(this.settings.cardsSet.length) - 8) *
             3) /
             4 +
-            16) *
+            8) *
           Math.sqrt(this.settings.cardsSet.length)
         }px`,
         zoom: `${
