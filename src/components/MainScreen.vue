@@ -134,7 +134,7 @@ export default {
   }
 
   .screen {
-    padding-top: 4rem;
+    padding-top: 2rem;
     justify-content: start;
   }
 }

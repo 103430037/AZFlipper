@@ -178,10 +178,14 @@ export default {
 }
 
 /* Responsive cho may nho */
-@media screen and (max-width: 480px) and (min-width: 258px) {
+@media screen and (max-width: 480px) and (min-width: 257px) {
   .screen-inner {
     padding-top: 10rem;
     zoom: 0.5 !important;
+  }
+
+  .screen {
+    height: auto;
   }
 }
 
